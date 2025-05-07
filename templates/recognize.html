@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Face Detection</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        img {
+            border: 2px solid #000;
+        }
+        .container h1 {
+            color: black;
+        }
+        .btn15 {
+            background-color: #ea0f3b;
+            border: none;
+            padding: 10px 20px; 
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Live Face Detection</h1>
+        <br>
+        <img id="videoStream" src="{% url 'stream' %}" width="640" height="480" alt="Video Stream">
+        <br>
+        <button id="stopButton" class="btn15">Stop Camera</button>
+    </div>
+
+    <script>
+        const stopButton = document.getElementById('stopButton');
+        const videoStream = document.getElementById('videoStream');
+
+        // Function to stop the camera
+        function stopCamera() {
+            // Remove the video stream from the page
+            videoStream.src = '';
+
+            // Send a request to the Django server to stop the camera
+            fetch("{% url 'stop_camera' %}")
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.status); // Logs "Camera stopped" if successful
+                })
+                .catch(error => console.error("Error stopping camera:", error));
+        }
+
+        // Stop the camera when the stop button is clicked
+        stopButton.addEventListener('click', stopCamera);
+
+        // Stop the camera when navigating away from the page
+        window.addEventListener('beforeunload', stopCamera);
+    </script>
+</body>
+</html>

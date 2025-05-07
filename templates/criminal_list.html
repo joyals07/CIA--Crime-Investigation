@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title %}
+<title></title>
+{% endblock %}
+<style>
+    .card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-title {
+        font-weight: bold;
+        color: #333;
+    }
+     -->
+    <!-- .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+    
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: #fff;
+    }
+    </style>
+
+{% block content %}
+
+<!-- <div class="indexpage" style="background-image: url(); width:1600px; height:950px; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; margin: 0; position: relative;">    --> 
+ <div class="indexpage" style="background-color: rgb(38, 34, 51); width:1600px; height:950px; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; margin: 0; position: relative;">   
+
+
+<div class="container mt-1">
+    <!-- Header Section -->
+      <div class="text-center mb-5">
+        <h2 class="display-4 text-danger">Criminals Management</h2>
+        <p class="lead text-white">Manage and review the records of registered individuals. View their crimes or update details as needed.</p>
+    </div>
+
+    <!-- Search Bar -->
+     <div class="mb-4">
+        <form method="GET" action="{% url 'criminal_list' %}">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search criminals by name..." aria-label="Search">
+                <button class="btn btn-danger" type="submit">Search</button>
+            </div>
+        </form>
+     </div> 
+
+
+<div class="row row-cols-1 row-cols-md-1 row-cols-lg-4 g-4">
+    {% for person in criminals %}
+    <div class="col">
+        <div class="card shadow-sm h-100">
+              <div class="card-body">
+             <h5 class="card-title text-center">{{ person.name }}</h5>
+                <p class="text-muted small">Registered on: {{ person.date_registered|date:"M d, Y" }}</p>
+
+                <!-- Action Buttons -->
+              <div class="d-flex justify-content-center gap-3 mt-2">
+                    <a href="{% url 'view_all_crimes' person.id %}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-eye"></i> View All Crimes
+                    </a>
+                    <a href="{% url 'update_crime' person.id %}" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-edit"></i> Update Crime
+                    </a>
+                </div>  
+            </div>
+        </div>
+    </div> 
+    {% empty %} 
+    <div class="text-center">
+        <p class="text-muted">No criminals found matching your search.</p>
+    </div>  
+      {% endfor %}
+</div> 
+{% endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

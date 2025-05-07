@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detect Crime Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/detectcrime.css' %}">
+    <script>
+        // Define URLs for JavaScript to use
+        const trainModelUrl = "{% url 'detectcrime' %}";
+        const loadModelUrl = "{% url 'detectcrime' %}";
+        const showGraphUrl = "{% url 'detectcrime' %}";
+    </script>
+    <script src="{% static 'js/detectcrime.js' %}" defer></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>CrimeSys</h2>
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="javascript:history.back()">Back</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>Welcome to Crime Detection</h1>
+        </div>
+        <div class="stats">
+            <div class="stat-card">
+                <button type="button" id="trainButton">Train Model</button>
+            </div>
+            <div class="stat-card">
+                <button type="button" id="loadModelButtonDC">Load Model</button>
+            </div>
+            <div class="stat-card">
+                <button type="button" id="showCrimeTypesGraphButton">Crime Types</button>
+            </div>
+            <div class="stat-card">
+                <button type="button" id="showVictimAgeGraphButton">Age Dist</button>
+            </div>
+            <div class="stat-card">
+                <button type="button" id="showCrimeAreasGraphButton">Crime Areas</button>
+            </div>
+            <div class="stat-card">
+                <form id="crimeForm" method="post" action="{% url 'detectcrime' %}">
+                    {% csrf_token %}
+                    <button type="submit" name="action" value="predict" id="predictButton">Predict Crime</button>
+                </form>
+            </div>
+        </div>
+        <br><br> 
+
+        <!-- Message and Graph Container -->
+        <div class="card" id="statusCard" style="width: 300px; margin: auto;">
+            <h2>Status</h2>
+            <div class="message-container">
+                <p id="loadingMessage" style="color: rgb(209, 227, 8); display: none;">Running... Please wait.</p>
+                <p id="responseMessage" style="display: none;"></p>
+            </div>
+        </div>
+        
+        <!-- Graph Card with Additional Margin -->
+        <div class="card" id="graphCard" style="display: none;">
+            <h2>Graph</h2>
+            <div class="graph-container">
+                <img id="graphImage" src="" alt="Graph">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

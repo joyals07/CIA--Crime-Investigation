@@ -1,0 +1,11 @@
+ <div class="container mt-5 text-center">
+    <h2>Are you sure you want to delete this image?</h2>
+    <img src="{{ image.image.url }}" class="img-fluid mb-3" alt="">
+    <p>{{ image.name }}</p>
+
+    <form method="POST" action="{% url 'delete_image'  %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+        <a href="{% url 'criminals_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div> 

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Reporting Form</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0e1421;
+            color: #fff;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #1f2e47, #161d2b);
+            color: #8c9aad;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .sidebar h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+    .sidebar a {
+    display: block;
+    color: #9CA3AF;
+    text-decoration: none;
+    margin: 15px 0;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+    .sidebar a:hover {
+    color: #fff;
+    background: #374151;
+    border-radius: 5px;
+}
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 270px; 
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 540px;
+            margin: 0 auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d90707;
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #ddd;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 97%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        /* Submit Button */
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background: linear-gradient(45deg, #ff0000, #000);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-group button:hover {
+            background: linear-gradient(45deg, #000, #ff0000);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>CrimeSys</h2>
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="javascript:history.back()">Back</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <h1>Crime Register Form</h1>
+
+            <form action="{% url 'register_crime' person_id=person.id %}" method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="crimeType">Type of Crime</label>
+                    <select id="crimeType" name="crime_type" required>
+                        <option value="">Select crime type</option>
+                        <option value="theft">Theft</option>
+                        <option value="assault">Assault</option>
+                        <option value="vandalism">Vandalism</option>
+                        <option value="fraud">Fraud</option>
+                        <option value="murder">Murder</option>
+                        <option value="cybercrime">Cybercrime</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="incidentDetails">Incident Details</label>
+                    <textarea id="incidentDetails" name="description" rows="5" required placeholder="Describe the crime incident..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="incidentDate">Date of Incident</label>
+                    <input type="date" id="incidentDate" name="date_committed" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location of Incident</label>
+                    <input type="text" id="location" name="location" required placeholder="Enter the location of the incident">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Submit Report</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Simple client-side validation
+        document.querySelector("form").addEventListener("submit", function (event) {
+            let isValid = true;
+
+            const crimeType = document.getElementById("crimeType");
+            if (crimeType.value === "") {
+                alert("Please select a crime type.");
+                isValid = false;
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+</html>
+

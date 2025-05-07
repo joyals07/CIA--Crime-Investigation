@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <h1>{{ crime.name }} Details</h1>
+    <p><strong>People Involved:</strong> {{ crime.people_count }}</p>
+
+    <h2>People List</h2>
+    <ul class="list-group">
+        {% for person in crime.people_involved %}
+        <li class="list-group-item">
+            <strong>Name:</strong> {{ person.name }}<br>
+            <strong>Role:</strong> {{ person.role }}<br>
+            <strong>Contact:</strong> {{ person.contact }}
+        </li>
+        {% empty %}
+        <li class="list-group-item">No people involved in this crime.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'crimes_list' %}" class="btn btn-secondary mt-3">Back to Crimes List</a>
+</div>
+
+{% endblock %}

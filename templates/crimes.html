@@ -1,0 +1,226 @@
+{%load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      /* background-color: #2b2b3d; */
+      background-color: #262627;
+      color: #EAEAEA;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      background: linear-gradient(135deg, #1f2e47, #161d2b);
+      color: #8c9aad;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #9CA3AF;
+      text-decoration: none;
+      margin: 15px 0;
+      padding: 10px;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+      background: #374151;
+      border-radius: 5px;
+    }
+
+    .content-area {
+      margin-left: 270px; /* Adjust based on sidebar width */
+      padding: 20px;
+    }
+
+    h1 {
+      color: rgb(231, 231, 247);
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p.lead {
+      color: #C0C0D0;
+      font-size: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 85%;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* Card Styles */
+    .card {
+      background-color: #292943;
+      border: none;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px;
+      text-align: center;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.7);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #F5F5F5;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #AAAAAA;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      border-radius: 8px;
+      padding: 9px 24px;
+      font-weight: bold;
+      border: none;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
+      transform: translateY(-3px);
+    }
+
+    .card i {
+      font-size: 2.5rem;
+      color: #FF6A95;
+      margin-bottom: 10px;
+    }
+
+    .card:nth-child(2) i {
+      color: #48D1CC;
+    }
+
+    .card:nth-child(3) i {
+      color: #FFD700;
+    }
+
+    .card:nth-child(4) i {
+      color: #4CAF50;
+    }
+
+    .card:nth-child(5) i {
+      color: #E91E63;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    footer {
+      color: #7D7D90;
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 40px;
+    }
+   
+        .sidebar h2 {
+            color: #fff;
+            margin-bottom: 40px;
+        }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>CrimeSys</h2>
+    <a href="{% url 'home' %}" class="active">Home</a>
+    <a href="javascript:history.back()">Back</a>
+    <a href="{% url 'logout' %}">Logout</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h1 class="text-white">Crime Management</h1>
+        <p class="lead">Efficiently manage crime records and resources with the tools below.</p>
+      </div>
+      <div class="row">
+        <!-- Card 1 -->
+        <div class="card">
+          <i class="glyphicon glyphicon-pencil"></i>
+          <h5 class="card-title">Register Details</h5>
+          <p>Log new crime cases and keep records up to date.</p>
+          <a href="{% url 'register_person' %}" class="btn">Register Crime</a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <i class="glyphicon glyphicon-list"></i>
+          <h5 class="card-title">View Crime Records</h5>
+          <p>Browse all recorded crime cases and details.</p>
+          <a href="{% url 'crime_list' %}" class="btn">View Crime Records</a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <i class="glyphicon glyphicon-user"></i>
+          <h5 class="card-title">Edit Criminal Details</h5>
+          <p>Modify details for each registered individual.</p>
+          <a href="{% url 'edit_person_list' %}" class="btn">Edit Person Details</a>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+          <i class="glyphicon glyphicon-th-list"></i>
+          <h5 class="card-title">View Criminals List</h5>
+          <p>Browse all recorded criminals and their details.</p>
+          <a href="{% url 'criminals_list' %}" class="btn">View Criminals List</a>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+          <i class="glyphicon glyphicon-eye-open"></i>
+          <h5 class="card-title">Detect Crime</h5>
+          <p>Utilize tools to identify potential criminal activity.</p>
+          <a href="{% url 'detectcrime' %}" class="btn">Detect Crime</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
+

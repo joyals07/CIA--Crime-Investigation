@@ -1,0 +1,66 @@
+# Ignore the virtual environment directory (venv)
+vnv/
+  
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore Django migration files
+migrations/
+
+# Ignore environment configuration files
+.env
+.env.*
+
+# Ignore log files
+*.log
+
+# Ignore IDE or editor specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore system-specific files (macOS, Windows)
+.DS_Store
+Thumbs.db
+
+# Ignore .pytest_cache for tests
+.pytest_cache/
+
+# Ignore coverage reports
+.coverage
+coverage.xml
+*.coveragerc
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore SQLite database file
+db.sqlite3
+
+# Ignore migration cache files
+*/migrations/__pycache__/
+
+# Ignore the Python egg-info directories
+*.egg-info/
+.eggs/
+
+# Ignore build files
+build/
+dist/
+media/
+
+# Ignore pipenv and poetry lock files (if not used)
+Pipfile.lock
+poetry.lock
+
+# Ignore Docker-related files if not used
+docker-compose.override.yml
+*.dockerfile
+
+# Ignore other files like database files, etc.
+db.sqlite3

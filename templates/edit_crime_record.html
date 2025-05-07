@@ -1,0 +1,245 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #121212; 
+            color: #e0e0e0;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+          
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #1c1c1c; 
+            border-bottom: 2px solid #444;
+        }
+
+        .navbar .navbar-brand {
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .navbar .nav-link {
+            color: #bbbbbb;
+            font-size: 1.1rem;
+            margin-left: 20px;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ff9800;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: #1f1f1f; /* Card background */
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            color: #e0e0e0;
+            max-width: 500px; /* Adjust this value to your desired width */
+            margin: auto; /* Center the card */
+        }
+
+        .card-header {
+            background-color: #333;
+            border-radius: 15px 15px 0 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Profile Picture */
+        .profile-picture-container img {
+            border-radius: 50%;
+            border: 5px solid #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 120px;
+            height: 120px;
+        }
+
+        /* Form Inputs */
+        .person-form-container input,
+        .person-form-container select,
+        .person-form-container textarea {
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .person-form-container input:focus,
+        .person-form-container select:focus,
+        .person-form-container textarea:focus {
+            border-color: #ff9800;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: #ff9800;
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #e68a00;
+        }
+
+        .btn-danger {
+            background-color: #d32f2f;
+            color: white;
+            font-weight: bold;
+            border-radius: 25px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #b71c1c;
+        }
+
+        /* Success Alert */
+        .alert {
+            background-color: #323232;
+            color: #d4edda;
+            border: 1px solid #2b6e59;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1c1c1c;
+            color: #7d7d7d;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .custom-container-small {
+                padding: 20px 10px;
+            }
+        }
+
+
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0e1421;
+            color: #fff;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 200vh;
+            position: fixed;
+            background: linear-gradient(135deg, #1f2e47, #161d2b);
+            color: #8c9aad;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+
+ .sidebar a {
+    display: block;
+    color: #9CA3AF;
+    text-decoration: none;
+    margin: 15px 0;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+
+.sidebar a:hover {
+    color: #fff;
+    background: #374151;
+    border-radius: 5px;
+}
+.container.custom-container-small {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin-left: 260px; 
+}
+h2{
+    color:#f8f9f8;
+}
+
+    </style>
+</head>
+<body>
+
+ <div class="sidebar">
+    <h2>CrimeSys</h2>
+
+    <a href="{% url 'home' %}" class="active">Home</a>
+    <a href="javascript:history.back()">Back</a>
+    <a href="{% url 'logout' %}">Logout</a>
+</div>
+
+    <!-- Main Content -->
+    <div class="container custom-container-small mt-3">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="card">
+            <div class="card-header">Edit Profile</div>
+            <div class="card-body">
+                <div class="profile-picture-container text-center mb-4">
+                    <img src="{{ profile_picture_url }}" alt="Profile Picture">
+                </div>
+
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="person-form-container">
+                        {{ person_form.as_p }}
+                    </div>
+                    <div class="text-center">
+                        <a href="{% url 'camerafeed' person.name %}" class="btn btn-primary btn-sm">Open Camera</a>
+                        <button type="submit" class="btn btn-danger btn-sm">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+ 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+ 

@@ -1,0 +1,221 @@
+# Import necessary libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.neighbors import NearestNeighbors
+import joblib
+# Configure visualization settings
+sns.set(style="whitegrid")
+
+
+
+# Load and visualize the dataset
+def load_and_visualize_data():
+    # Load the dataset
+    df = pd.read_csv('crime_data.csv')
+    df = df.sample(n=500000, random_state=42)
+    
+    # Drop unnecessary columns
+    columns_to_drop = [
+        'DR_NO', 'Date Rptd', 'DATE OCC', 'LOCATION',
+        'Cross Street', 'AREA NAME', 'Mocodes', 'Crm Cd 1', 'Crm Cd 2', 'Crm Cd 3', 'Crm Cd 4'
+    ]
+    df = df.drop(columns=columns_to_drop)
+    
+    # Fill missing values
+    df['Vict Sex'] = df['Vict Sex'].fillna('U')
+    df['Vict Descent'] = df['Vict Descent'].fillna('Unknown')
+    df['Premis Desc'] = df['Premis Desc'].fillna('Unknown')
+    df['Weapon Desc'] = df['Weapon Desc'].fillna('No Weapon')
+    
+    # Reduce the number of unique crime types
+    top_10_crime_types = df['Crm Cd Desc'].value_counts().nlargest(10).index
+    df['Crm Cd Desc'] = df['Crm Cd Desc'].apply(lambda x: x if x in top_10_crime_types else 'Others')
+    
+    # Show basic dataset description
+    print("Dataset Description:")
+    print(df.describe(include='all'))
+    print("\nTop 5 Rows of the Dataset:")
+    print(df.head())
+    
+    # Visualize distribution of crimes
+    plt.figure(figsize=(12, 6))
+    sns.countplot(y='Crm Cd Desc', data=df, order=df['Crm Cd Desc'].value_counts().index, palette='viridis')
+    plt.title("Top Crime Types")
+
+
+
+    plt.xlabel("Count")
+    plt.ylabel("Crime Type")
+    plt.show()
+    
+    # Visualize victim age distribution
+    plt.figure(figsize=(12, 6))
+    sns.histplot(df['Vict Age'], bins=30, kde=True, color='blue')
+    plt.title("Victim Age Distribution")
+    plt.xlabel("Age")
+    plt.ylabel("Frequency")
+    plt.show()
+    
+    # Visualize distribution of areas
+    plt.figure(figsize=(12, 6))
+    sns.countplot(x='AREA', data=df, palette='coolwarm')
+    plt.title("Distribution of Crimes by Area")
+    plt.xlabel("Area")
+    plt.ylabel("Count")
+    plt.show()
+    
+    return df
+
+df = load_and_visualize_data()
+
+# Preprocessing the data
+def preprocess_data(df):
+    label_encoders = {}
+    scaler = StandardScaler()
+    
+    # Encode categorical features
+    categorical_columns = ['Crm Cd Desc', 'Vict Sex', 'Vict Descent', 'Premis Desc', 'Weapon Desc']
+    for col in categorical_columns:
+        le = LabelEncoder()
+        df[col] = le.fit_transform(df[col])
+        label_encoders[col] = le
+    
+    # Fill missing values in numerical features
+    df['Vict Age'] = df['Vict Age'].fillna(-1)
+    df['Premis Cd'] = df['Premis Cd'].fillna(-1)
+    df['Weapon Used Cd'] = df['Weapon Used Cd'].fillna(-1)
+    df['LAT'] = df['LAT'].fillna(0)
+    df['LON'] = df['LON'].fillna(0)
+    
+    # Select and scale numeric features
+    features = ['TIME OCC', 'AREA', 'Rpt Dist No', 'Vict Age', 'Premis Cd', 'Weapon Used Cd', 'LAT', 'LON']
+    X = df[features]
+    X_scaled = scaler.fit_transform(X)
+    
+    return df, X_scaled, scaler, label_encoders
+
+df, X_scaled, scaler, label_encoders = preprocess_data(df)
+
+
+# Train the Nearest Neighbors model
+def train_and_visualize_knn(X_scaled):
+    nn_model = NearestNeighbors(n_neighbors=5, metric='euclidean')
+    nn_model.fit(X_scaled)
+    
+    # Visualize distances to nearest neighbors for a sample point
+    distances, indices = nn_model.kneighbors(X_scaled[:10])
+    plt.figure(figsize=(12, 6))
+    for i in range(len(distances)):
+        plt.plot(range(1, 6), distances[i], marker='o', label=f'Sample {i + 1}')
+    plt.title("Distances to Nearest Neighbors")
+    plt.xlabel("Neighbor Rank")
+    plt.ylabel("Distance")
+    plt.legend()
+    plt.show()
+    
+    return nn_model
+
+nn_model = train_and_visualize_knn(X_scaled)
+
+
+
+
+# Save and load functions
+def save_model(nn_model, scaler, label_encoders):
+    joblib.dump(nn_model, 'nn_model.pkl')
+    joblib.dump(scaler, 'scaler.pkl')
+    joblib.dump(label_encoders, 'label_encoders.pkl')
+
+def load_model():
+    nn_model = joblib.load('nn_model.pkl')
+    scaler = joblib.load('scaler.pkl')
+    label_encoders = joblib.load('label_encoders.pkl')
+    return nn_model, scaler, label_encoders
+
+save_model(nn_model, scaler, label_encoders)
+nn_model, scaler, label_encoders = load_model()
+
+
+
+
+# Predict similar crimes based on new input and decode the results
+def predict_and_decode_similar_crimes(new_crime, df, nn_model, scaler, label_encoders):
+    features = ['TIME OCC', 'AREA', 'Rpt Dist No', 'Vict Age', 'Premis Cd', 'Weapon Used Cd', 'LAT', 'LON']
+    new_crime_df = pd.DataFrame([new_crime])
+    new_crime_scaled = scaler.transform(new_crime_df)
+    
+    # Find neighbors
+    distances, indices = nn_model.kneighbors(new_crime_scaled)
+    similar_crimes = df.iloc[indices[0]].copy()
+    
+    # Decode categorical columns
+    categorical_columns = ['Crm Cd Desc', 'Vict Sex', 'Vict Descent', 'Premis Desc', 'Weapon Desc']
+    for col in categorical_columns:
+        similar_crimes[col] = label_encoders[col].inverse_transform(similar_crimes[col])
+    
+    # Visualize similar crimes
+    plt.figure(figsize=(12, 6))
+    sns.scatterplot(x=similar_crimes['LAT'], y=similar_crimes['LON'], hue=similar_crimes['Crm Cd Desc'], palette='tab10')
+    plt.title("Geographic Distribution of Similar Crimes")
+    plt.xlabel("Latitude")
+    plt.ylabel("Longitude")
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.show()
+    
+    # Return the decoded similar crimes dataframe
+    return similar_crimes
+
+# Example input
+new_crime = {
+    'TIME OCC': 1200,
+    'AREA': 1,
+    'Rpt Dist No': 101,
+    'Vict Age': 30,
+    'Premis Cd': 102,
+    'Weapon Used Cd': 0,
+    'LAT': 34.0,
+    'LON': -118.0
+}
+
+# Predict similar crimes and decode
+decoded_similar_crimes = predict_and_decode_similar_crimes(new_crime, df, nn_model, scaler, label_encoders)
+decoded_similar_crimes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

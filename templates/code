@@ -1,0 +1,1347 @@
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ crime.name }} - Crime Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0e1421;
+            color: #fff;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .card h5 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #f9a826;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1>{{ crime.name }}</h1>
+        <p><strong>Description:</strong> {{ crime.description }}</p>
+        <p><strong>Date Reported:</strong> {{ crime.date_reported }}</p>
+        <p><strong>Status:</strong> {{ crime.status }}</p>
+
+        <h2>People Involved</h2>
+        <div class="card-group">
+            {% for person in people_involved %}
+            <div class="card">
+                <img src="{% if person.profile_picture %}{{ person.profile_picture.url }}{% else %}{% static 'profile_picture/default-profile.png' %}{% endif %}" 
+                    alt="Profile Picture">
+                <h5>{{ person.name }}</h5>
+                <p><strong>Role:</strong> {{ person.role }}</p>
+            </div>
+            {% empty %}
+            <p>No people involved in this case.</p>
+            {% endfor %}
+        </div>
+
+        <a href="{% url 'people' %}" class="back-btn">Back to People</a>
+    </div>
+
+</body>
+</html> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#criminallistlatest
+<!-- {% extends 'base.html' %}
+{% block title %}
+<title></title>
+{% endblock %}
+<style>
+    .card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-title {
+        font-weight: bold;
+        color: #333;
+    }
+     -->
+    <!-- .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+    
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: #fff;
+    }
+    </style>
+
+{% block content %}
+<
+<!-- <div class="indexpage" style="background-image: url(); width:1600px; height:950px; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; margin: 0; position: relative;">    --> -->
+<!-- <div class="indexpage" style="background-color: rgb(35, 26, 26); width:1600px; height:950px; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; margin: 0; position: relative;">   
+
+
+<div class="container mt-5">
+    <!-- Header Section -->
+    <!-- <div class="text-center mb-5">
+        <h2 class="display-4 text-danger">Criminals Management</h2>
+        <p class="lead text-white">Manage and review the records of registered individuals. View their crimes or update details as needed.</p>
+    </div>
+
+    <!-- Search Bar -->
+    <!-- <div class="mb-4">
+        <form method="GET" action="{% url 'criminal_list' %}">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search criminals by name..." aria-label="Search">
+                <button class="btn btn-danger" type="submit">Search</button>
+            </div>
+        </form>
+    </div> 
+
+
+<div class="row row-cols-1 row-cols-md-1 row-cols-lg-4 g-4">
+    {% for person in criminals %}
+    <div class="col">
+        <div class="card shadow-sm h-100"> -->
+            <!-- <div class="card-body">
+                <h5 class="card-title text-center">{{ person.name }}</h5>
+                <p class="text-muted small">Registered on: {{ person.date_registered|date:"M d, Y" }}</p>
+
+                <!-- Action Buttons -->
+                <!-- <div class="d-flex justify-content-center gap-3 mt-2">
+                    <a href="{% url 'view_all_crimes' person.id %}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-eye"></i> View All Crimes
+                    </a>
+                    <a href="{% url 'update_crime' person.id %}" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-edit"></i> Update Crime
+                    </a>
+                </div> -->
+            <!-- </div>
+        </div>
+    </div> 
+    {% empty %} -->
+    <!-- <div class="text-center">
+        <p class="text-muted">No criminals found matching your search.</p>
+    </div> -->
+    <!-- {% endfor %}
+</div> -->
+<!-- 
+{% endblock %} -->
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0e1421;
+            color: #fff;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .card h5 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #f9a826;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1>{{ crime.crime_type|title }}</h1>
+        <p><strong>Description:</strong> {{ crime.description }}</p>
+        <p><strong>Date Committed:</strong> {{ crime.date_committed }}</p>
+        <p><strong>Location:</strong> {{ crime.location }}</p>
+        <p><strong>Contact:</strong> {{ crime.phone }} | {{ crime.email }}</p>
+
+        <h2>People Involved</h2>
+        <div class="card-group">
+            {% for person in people_involved %}
+            <div class="card">
+                <img src="{% if person.profile_picture %}{{ person.profile_picture.url }}{% else %}{% static 'profile_picture/default-profile.png' %}{% endif %}" 
+                    alt="Profile Picture">
+                <h5>{{ person.name }}</h5>
+                <p><strong>Age:</strong> {{ person.age }}</p>
+                <p><strong>Address:</strong> {{ person.address }}</p>
+            </div>
+            {% empty %}
+            <p>No people involved in this crime.</p>
+            {% endfor %}
+        </div>
+
+        <a href="{% url 'people' %}" class="back-btn">Back to People</a>
+    </div>
+
+</body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Crime Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #1e1e2f;
+      color: #f1f1f1;
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .sidebar {
+      height: 100vh;
+      width: 240px;
+      background-color: #2a2a3b;
+      padding: 20px;
+      position: fixed;
+    }
+
+    .sidebar .nav-item a {
+      color: #bbb;
+      font-weight: 500;
+      margin: 15px 0;
+      display: block;
+      text-decoration: none;
+    }
+
+    .sidebar .nav-item a:hover {
+      color: #fff;
+      background-color: #444;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .main-content {
+      margin-left: 260px;
+      padding: 20px;
+    }
+
+    .dashboard-header {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .stat-cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #29293d;
+      border-radius: 12px;
+      padding: 20px;
+      color: #fff;
+      flex: 1 1 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card .title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .card .value {
+      font-size: 1.8rem;
+      margin-top: 10px;
+      color:red;
+    }
+
+    .chart-container {
+      margin-top: 40px;
+    }
+
+    canvas {
+      background-color:rgb(214, 214, 221);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      color: #bbb;
+      margin-top: 40px;
+    }
+
+    .submit-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <nav>
+    <div class="nav-item">
+
+      <br>
+
+      <a href="{% url 'people' %}"><i class="fas fa-users"></i> People</a>
+      <a href="{% url 'crime_list' %}"><i class="fa fa-list"></i> Records</a>
+      <a href="{% url 'settings' %}"><i class="fa fa-cogs"></i> Settings</a>
+    </div>
+  </nav>
+</div>
+
+<div class="main-content">
+  <div class="dashboard-header">Welcome back, Admin</div>
+  
+  <div class="stat-cards">
+   
+  </div>
+
+  <div class="chart-container">
+    <canvas id="crimeChart" width="400" height="200"></canvas>
+  </div>
+</div>
+
+<div class="footer">
+  <p>&copy; 2024 Crime Management System</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('crimeChart').getContext('2d');
+  const crimeChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May'],
+      datasets: [{
+        label: 'Crime Reports',
+        data: [10, 20, 15, 25, 30],
+        borderColor: '#007bff',
+        backgroundColor: 'rgba(0, 123, 255, 0.1)',
+        tension: 0.4,
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+predictpage
+    
+    <!-- <h2>Results</h2> 
+
+    <div id="results" style="margin-top: 2px; text-align:center">
+        {% if similar_crimes_df %}
+            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 20px;">Similar Crimes Found:</h3>
+            <div style="display: inline-block; text-align: right; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+                <div style="padding: 20px; background-color: #f9f9f9;">
+                    {{ similar_crimes_df|safe }}
+                </div>
+            </div>
+        {% else %}
+            <p style="color: #777; font-size: 1.2rem;">No similar crimes found.</p>
+        {% endif %}
+    </div> 
+      -->
+
+
+<!--       
+<h2>Results</h2> 
+
+<div style="display: flex; justify-content: center; margin-top: 2px;">
+    <div id="results" style=" margin-left: 2px;">
+        {% if similar_crimes_df %}
+            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 20px;">Similar Crimes Found:</h3>
+            <div style="display: inline-block; text-align: right; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+                <div style="padding: 20px; background-color: #f9f9f9;">
+                    {{ similar_crimes_df|safe }}
+                </div>
+            </div>
+        {% else %}
+            <p style="color: #777; font-size: 1.2rem;">No similar crimes found.</p>
+        {% endif %}
+    </div>
+
+</div> -->
+
+
+
+
+
+
+
+<!-- 
+    <div id="results" style="width: 1800%;">
+        {% if similar_crimes_df %}
+            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 20px;">Similar Crimes Found:</h3>
+            <div style="display: inline-block; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background-color: #f9f9f9; padding: 20px;">
+                {{ similar_crimes_df|safe }}
+            </div>
+        {% else %}
+            <p style="color: #777; font-size: 1.2rem;">No similar crimes found.</p>
+        {% endif %}
+    </div>  -->
+
+
+
+    
+<!-- 
+<div id="results" style="width: 90vw; margin-left: auto; margin-right: auto;">
+    {% if similar_crimes_df %}
+        <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 20px;">Similar Crimes Found:</h3>
+        <div style="display: block; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background-color: #f9f9f9; padding: 20px;">
+            {{ similar_crimes_df|safe }}
+        </div>
+    {% else %}
+        <p style="color: #777; font-size: 1.2rem;">No similar crimes found.</p>
+    {% endif %}
+</div>  -->
+
+
+
+
+
+
+
+
+
+<!-- 
+ 
+<div id="results" style="width: 100vw; margin-left: auto; margin-right: auto;">
+    {% if similar_crimes_df %}
+        <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 20px;">Similar Crimes Found:</h3>
+        <div style="display: block; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background-color: #f9f9f9; padding: 20px;">
+            {{ similar_crimes_df|safe }}
+        </div>
+    {% else %}
+        <p style="color: #777; font-size: 1.2rem;">No similar crimes found.</p>
+    {% endif %}
+</div>   -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Load Model</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0e1421; /* Dark background */
+            color: #fff; /* White text */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 30%;
+            max-width: 1200px;
+            background: #1c2534;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        button {
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #2575fc 0%, #6a11cb 100%);
+        }
+
+        #loadingMessage {
+            display: none;
+            font-size: 16px;
+            color: #f9a826;
+            margin-top: 20px;
+        }
+
+        #statusMessage {
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .status-success {
+            color: #4caf50; /* Green for success */
+        }
+
+        .status-error {
+            color: #f44336; /* Red for error */
+        }
+
+        /* Add some glow effect to the button and header */
+        h1 {
+            text-shadow: 0 0 8px #6a11cb, 0 0 12px #2575fc;
+        }
+
+        button {
+            box-shadow: 0 0 8px #6a11cb, 0 0 12px #2575fc;
+        }
+
+        .sidebar {
+    background-color: #1c1c28;
+    color: #fff;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Change the shadow direction to the left */
+    left: 0; /* This moves the sidebar to the right side */
+}
+
+
+        .sidebar h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        
+    
+ .sidebar a {
+    display: block;
+    color: #9CA3AF;
+    text-decoration: none;
+    margin: 15px 0;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+
+.sidebar a:hover {
+    color: #fff;
+    background: #374151;
+    border-radius: 5px;
+}
+.sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            background: linear-gradient(135deg, #1f2e47, #161d2b);
+            color: #8c9aad;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .sidebar h2 {
+            color: #fff;
+            font-size: 1.9rem;
+            margin-bottom: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>CrimeSys</h2>
+      <br>
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="javascript:history.back()">Back</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    
+    </div>
+    
+        <a href="{% url 'people' %}"><i class="fas fa-users"></i> People</a>
+        <a href="{% url 'crime_list' %}"><i class="fas fa-tasks"></i> Records</a>
+        <a href="{% url 'settings' %}"><i class="fas fa-cogs"></i> Settings</a>
+
+    <div class="container">
+        <h1>Load KNN Model</h1>
+
+        <!-- Form to trigger the loading -->
+        <!-- <form method="POST" id="loadModelForm">
+            {% csrf_token %}
+            <button 
+                type="button" 
+                id="loadModelButton"
+            >
+                Load Model
+            </button>
+        </form>
+
+        <!-- Message container to show status -->
+        <!-- <div id="messageContainer">
+            <p id="loadingMessage">Running... Please wait.</p>
+            <p id="statusMessage"></p>
+        </div> 
+    </div> -->
+
+    <!-- <script>
+        // Function to handle loading model logic
+        function sendLoadModelRequest() {
+            const loadingMessage = document.getElementById('loadingMessage');
+            const statusMessage = document.getElementById('statusMessage');
+
+            // Show "Running/Loading" message
+            loadingMessage.style.display = "block";
+            statusMessage.textContent = ""; // Clear any previous message
+
+            const formData = new FormData();
+            formData.append('action', 'load_model'); // Specify the action for loading the model
+
+            // Send the AJAX request
+            fetch("{% url 'detectcrime' %}", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Hide "Running/Loading" message
+                loadingMessage.style.display = "none";
+
+                // Display the result message
+                statusMessage.textContent = data.message;
+                if (data.message.includes("successfully")) {
+                    statusMessage.className = "status-success"; // Success message
+                } else {
+                    statusMessage.className = "status-error"; // Failure message
+                }
+            })
+            .catch(error => {
+                // Hide "Running/Loading" message
+                loadingMessage.style.display = "none";
+
+                // Display error message
+                statusMessage.textContent = `Error: ${error}`;
+                statusMessage.className = "status-error";
+            });
+        }
+
+        // Attach event listener to the Load Model button
+        document.getElementById('loadModelButton').addEventListener('click', sendLoadModelRequest);
+    </script>
+</body>
+</html>
+#loadmodelpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- #correctcode -->
+<!-- {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #1E1E2F; /* Darker background for dashboard look */
+      color: #EAEAEA; /* Light text for better contrast */
+      margin: 0;
+    }
+
+    h1 {
+      color:rgb(231, 231, 247);
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p.lead {
+      color: #C0C0D0;
+      font-size: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 85%;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* Card Styles */
+    .card {
+      background-color: #292943; /* Slightly lighter background for contrast */
+      border: none;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px;
+      text-align: center;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.7);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #F5F5F5;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #AAAAAA;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      border-radius: 8px;
+      padding: 9px 24px;
+      font-weight: bold;
+      border: none;
+      background: linear-gradient(90deg, #6a11cb, #2575fc); /* Gradient button */
+      color: white;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #2575fc, #6a11cb); /* Reverse gradient */
+      transform: translateY(-3px);
+    }
+
+    /* Card Icon Styles */
+    .card i {
+      font-size: 2.5rem;
+      color: #FF6A95; /* Default icon color */
+      margin-bottom: 10px;
+    }
+
+    .card:nth-child(2) i {
+      color: #48D1CC; /* Teal color for View Crime Records */
+    }
+
+    .card:nth-child(3) i {
+      color: #FFD700; /* Gold for Edit Details */
+    }
+
+    .card:nth-child(4) i {
+      color: #4CAF50; /* Green for View Criminals List */
+    }
+
+    .card:nth-child(5) i {
+      color: #E91E63; /* Pink for Detect Crime */
+    }
+
+    /* Layout Adjustments */
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    footer {
+      color: #7D7D90;
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="indexpage">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h1 class="text-white">Crime Management</h1>
+        <p class="lead">Efficiently manage crime records and resources with the tools below.</p>
+      </div>
+      <div class="row">
+        Card 1
+        <div class="card">
+          <i class="glyphicon glyphicon-pencil"></i>
+          <h5 class="card-title">Register Details</h5>
+          <p>Log new crime cases and keep records up to date.</p>
+          <a href="{% url 'register_person' %}" class="btn">Register Crime</a>
+        </div>
+
+        <!-- Card 2 -->
+        <!-- <div class="card">
+          <i class="glyphicon glyphicon-list"></i>
+          <h5 class="card-title">View Crime Records</h5>
+          <p>Browse all recorded crime cases and details.</p>
+          <a href="{% url 'crime_list' %}" class="btn">View Crime Records</a>
+        </div>
+
+        <!-- Card 3 -->
+        <!-- <div class="card">
+          <i class="glyphicon glyphicon-user"></i>
+          <h5 class="card-title">Edit Criminal Details</h5>
+          <p>Modify details for each registered individual.</p>
+          <a href="{% url 'edit_person_list' %}" class="btn">Edit Person Details</a>
+        </div>
+
+        <!-- Card 4 -->
+        <!-- <div class="card">
+          <i class="glyphicon glyphicon-th-list"></i>
+          <h5 class="card-title">View Criminals List</h5>
+          <p>Browse all recorded criminals and their details.</p>
+          <a href="{% url 'criminals_list' %}" class="btn">View Criminals List</a>
+        </div>
+
+        <!-- Card 5 -->
+        <!-- <div class="card">
+          <i class="glyphicon glyphicon-eye-open"></i>
+          <h5 class="card-title">Detect Crime</h5>
+          <p>Utilize tools to identify potential criminal activity.</p>
+          <a href="{% url 'detectcrime' %}" class="btn">Detect Crime</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <footer>
+    &copy; 2025 Crime Management System. All rights reserved.
+  </footer>
+</body>
+</html> -->
+
+
+ detectpage
+ <!-- <div class="card" id="statusCard">
+            <h2>Status</h2>
+            <div class="message-container">
+                <p id="loadingMessage" style="color: rgb(209, 227, 8); display: none;">Running... Please wait.</p>
+                <p id="responseMessage" style="display: none;"></p>
+            </div>
+        </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ --> 
+
+
+
+
+
+<!-- 
+
+
+#predictsimilarpage
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Data Entry</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0e1421; /* Dark background */
+            color: #ffffff; /* White text */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2, h3 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-container {
+            background-color: #1c2534; /* Card-like background */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #f9a826; /* Highlight color */
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            background-color: #2a3346;
+            color: #ffffff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        select:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: #f9a826;
+            box-shadow: 0 0 8px rgba(249, 168, 38, 0.5);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            background-color: #ff5722;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+            box-shadow: 0px 4px 12px rgba(230, 74, 25, 0.3);
+        }
+
+        button:active {
+            background-color: #d84315;
+            box-shadow: 0px 2px 8px rgba(230, 74, 25, 0.2);
+        }
+
+        button:focus {
+            outline: none;
+            box-shadow: 0px 0px 6px rgba(255, 87, 34, 0.8);
+        }
+
+        /* Results Section */
+        #results {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 800px;
+            background-color: #1c2534;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        #results h3 {
+            color: #f9a826;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #results table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #results th, #results td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ccc;
+            color: #ffffff;
+        }
+
+        #results th {
+            background-color: #f9a826;
+            color: #1c2534;
+        }
+
+        #results td {
+            background-color: #2a3346;
+        }
+
+        #results p {
+            color: #f9a826;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Predict Similar Crimes</h1>
+        <form id="crimeForm" method="POST" action="">
+            {% csrf_token %}
+            <label for="timeOcc">Time Occurred</label>
+            <select id="timeOcc" name="TIME_OCC">
+                {% for time in time_occs %}
+                    <option value="{{ time }}">{{ time }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="area">Area</label>
+            <select id="area" name="AREA">
+                {% for area in areas %}
+                    <option value="{{ area }}">{{ area }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="rptDistNo">Report District Number</label>
+            <select id="rptDistNo" name="Rpt_Dist_No">
+                {% for district in report_districts %}
+                    <option value="{{ district }}">{{ district }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="victAge">Victim Age</label>
+            <input type="number" id="victAge" name="Vict_Age" min="0" step="1" value="{{ default_vict_age }}" required>
+
+            <label for="premisCd">Premises Code</label>
+            <select id="premisCd" name="Premis_Cd">
+                {% for code in premises_codes %}
+                    <option value="{{ code }}">{{ code }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="weaponUsedCd">Weapon Used Code</label>
+            <select id="weaponUsedCd" name="Weapon_Used_Cd">
+                {% for code in weapon_used_codes %}
+                    <option value="{{ code }}">{{ code }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="lat">Latitude</label>
+            <input type="number" id="lat" name="LAT" value="{{ default_lat }}" step="0.0001" required>
+
+            <label for="lon">Longitude</label>
+            <input type="number" id="lon" name="LON" value="{{ default_lon }}" step="0.0001" required>
+
+            <button type="submit" class="btn-professional" id="predictBtn">Find Similar Crimes</button>
+        </form>
+    </div>
+
+    <h2>Results</h2> 
+
+    <div id="results" style="margin-top: 2px; text-align:center">
+        {% if similar_crimes_df %}
+            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 20px;">Similar Crimes Found:</h3>
+            <div style="display: inline-block; text-align: right; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+                <div style="padding: 20px; background-color: #f9f9f9;">
+                    {{ similar_crimes_df|safe }}
+                </div>
+            </div>
+        {% else %}
+            <p style="color: #777; font-size: 1.2rem;">No similar crimes found.</p>
+        {% endif %}
+    </div> 
+     
+</body>
+</html> -->

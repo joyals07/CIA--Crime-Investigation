@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Camera Functions</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="indexpage" style="background-image: url(https://image.shutterstock.com/image-vector/face-id-scan-recognition-ai-600nw-2213240695.jpg?app=peacock); width:1600px; height:950px; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; margin: 0; position: relative;">   
+    
+    <!-- Live Face Detection Button Positioned at the Top Center -->
+<div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%);">
+    <a href="{% url 'recognize_face' %}">
+        <button class="btn w-auto shadow-sm p-2" 
+            style="background-color: white; color: black; font-size: 1.1rem; font-weight: bold; text-transform: uppercase; border-radius: 6px; transition: background-color 0.3s, transform 0.2s;">
+            Live Face Detection
+        </button>
+    </a>
+</div>
+
+</div>
+
+{% endblock %}
+
+
+

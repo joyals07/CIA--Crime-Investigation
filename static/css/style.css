@@ -1,0 +1,2395 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh; 
+  display: flex; 
+  align-items:normal;
+  justify-content:center; 
+  background: #f2f3f9b1; 
+  height:100%;
+  margin:0;
+}
+
+
+.wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 440px;
+  width: 148%;
+  background: #fff;
+  padding: 34px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  
+}
+
+
+.wrapper h2{
+  position: right;
+  font-size: 27px;
+  font-weight: 600;
+  color: #333;
+  text-decoration: underline;
+}
+.wrapper h2::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 28px;
+  border-radius: 12px;
+  background: #0949f8;
+}
+.wrapper form{
+  margin-top: 30px;
+}
+
+.app p1{
+  text-align: center;
+  position: absolute;
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-decoration: underline;
+  top: 8%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: rgb(231, 9, 9);
+  /* background-color:#ed2e3e;  */
+
+}
+
+
+/* 
+.button {
+  padding: 17px 25px;
+  background-color: #0e58ee;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right:10px ;
+} */
+
+/* .index {
+  display: flex;
+  justify-content: center; 
+  gap: 25px; 
+  margin-top: 9px; 
+  margin-left:83%;
+} */
+.button:hover {
+  background-color:#0b13eac7;
+}
+/* 
+.indexpage{
+  background-color:white;
+  width:1500px; 
+  height:900px ;
+  background-image:url(https://www.slidekit.com/wp-content/uploads/2024/07/Editable-PowerPoint-Template-Crime.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0; 
+ 
+} */
+
+
+
+
+.wrapper form .input-box{
+  height: 60px;
+  margin: 18px 0;
+}
+form .input-box input{
+  height: 100%;
+  width: 105%;
+  outline: none;
+  padding: 8px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 1.5px solid #C7BEBE;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.input-box input:focus,
+.input-box input:valid{
+  border-color: #555557;
+}
+form .policy{
+  display: flex;
+  align-items: center;
+}
+form h3{
+  color: #707070;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.input-box.button1 input{
+  color: #fff;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  letter-spacing: 1px;
+  border: none;
+  background:rgb(37, 4, 250);
+  cursor: pointer;
+}
+.input-box.button input:hover{
+  background:rgb(66, 43, 241);
+}
+form .text h3{
+ color: #333;
+ width: 100%;
+ text-align: center;
+}
+form .text h3 a{
+  color: #4070f4;
+  text-decoration: none;
+}
+form .text h3 a:hover{
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* style.css */
+body {
+  background-color: #f8f9fa; /* Light background for better contrast */
+}
+
+.indexpage {
+  padding: 50px 20px; /* Add some padding to the container */
+  background-image: url(https://www.slidekit.com/wp-content/uploads/2024/07/Editable-PowerPoint-Template-Crime.jpg);
+  width:1500px; 
+  height:900px ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0; 
+}
+/* 
+.app {
+  #background-color: #ee1a1d; Bootstrap primary color
+  color:red; /* Text color */
+  /* padding: 20px; /* Space around the text */
+  /* border-radius: 10px; /* Rounded corners */
+ 
+
+.app p2{
+color: red;
+top: 30px;
+font-size: 35px;
+margin-top: 3px; 
+margin-bottom: 10px;
+position: absolute;  
+margin-left: -9.3%;
+text-decoration: underline;
+}
+
+
+
+/* .p2 {
+  font-size: 20px; /* Larger font size for the heading */
+
+
+.index {
+  margin-top: 9px;  
+  display: flex;
+  justify-content: center; 
+  gap: 25px; 
+  margin-top: -8.9% ; 
+  margin-left:90%;
+  /* margin-bottom: 80px; */
+
+
+} 
+
+
+
+/* .index {
+  display: flex;
+  justify-content: center; 
+  gap: 25px; 
+  margin-top: 9px; 
+  margin-left:83%;
+ 
+
+
+.btn {
+  width: 200px; 
+  font-size: 1.2rem; 
+}
+
+
+
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.crime-list {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.crime-record {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.crime-record:last-child {
+  border-bottom: none;
+}
+
+.crime-record h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #007bff;
+}
+
+.crime-record p {
+  margin: 5px 0;
+  color: #555;
+}
+
+
+
+
+
+
+
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container4{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 18px;
+  transform: translate(-50%,-50%);
+  max-width: 430px;
+  width: 99%;
+  background-color:whitesmoke;
+  border-radius: 7px;
+  box-shadow: 0 7px 10px rgba(0,0,0,0.3);
+  
+  
+}
+.container .registration{
+  display: none;
+}
+#check:checked ~ .registration{
+  display: block;
+}
+#check:checked ~ .login{
+  display: none;
+}
+#check{
+  display: none;
+}
+.container .form{
+  padding: 2rem;
+}
+.form header{
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+ .form input{
+   height: 60px;
+   width: 100%;
+   padding: 0 15px;
+   font-size: 17px;
+   margin-bottom: 1.3rem;
+   border: 1px solid #636262;
+   border-radius: 6px;
+   outline: none;
+ }
+ .form input:focus{
+   box-shadow: 0 1px 0 rgba(149, 147, 147, 0.2);
+ }
+.form a{
+  font-size: 16px;
+  color: #950000;
+  text-decoration: none;
+}
+.form a:hover{
+  text-decoration: underline;
+}
+
+.signup{
+  font-size: 17px;
+  text-align: center;
+}  
+
+.signup label:hover{
+  text-decoration: underline;
+}
+
+
+.login h4{
+  text-align: center;
+  color: #333;
+  font-size: 27px;
+
+}
+
+/* .close{
+  text-align:center ;
+  bottom: 30px;
+} */
+/* 
+.regist{
+  color: #f9f0f0;
+  background: hsl(249, 92%, 44%);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.3rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.4s;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 13px 18px;
+  width: 389px;
+   
+}
+
+.regist:hover{
+  background: #350ab5;
+}  */
+
+
+.abc p{
+ 
+  position:absolute;
+  text-align: center;
+  position:fixed;
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 19px; 
+  top: 2%;
+  left: 50%;
+  color: #ef0a0a;
+  text-decoration: underline;
+  transform: translate(-50%,-50%);
+}
+
+
+.home{
+  background-color:white;
+  width:1500px; 
+  height:900px ;
+  background-image:url(https://stg-uploads.slidenest.com/template_821/templateColor_855/previewImages/crime-investigation-research-powerpoint-google-slides-keynote-presentation-template-24.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+ 
+}
+.profile{
+  background-color:white;
+  width:1500px; 
+  height:1000px ;
+  position:absolute;
+  text-align: center;
+  margin-bottom: 100px;
+  color: blue;
+
+
+
+}
+
+.pf{
+  display: flex;
+  justify-content: center; 
+  gap: 25px; 
+  margin-top: 9px; 
+  margin-left:99%;
+} 
+
+
+.profile-picture{
+  height:109px;
+  width:99px;
+
+}
+.details{
+  font-size: 28px;
+  color: #282727;
+}
+  
+.wrap{
+  background-color: #C7BEBE;
+}  
+
+.check h3{
+  font-size: 16px;
+  color: #950000;
+  margin-left: 25px;
+
+
+}
+.zxc h2{
+  color: #d711af;
+  margin-top:20px ;
+  font-size: 40px;
+}
+
+
+form .input-box2{
+  height: 100%;
+  width: 87%;
+  outline: none;
+  padding: 9px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #262525;
+  border: 1.5px solid #C7BEBE;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+
+
+.info{
+  color:black;
+}
+.editor{
+  margin-left: 19px;
+  background: rgb(253, 248, 248);
+}
+
+
+
+
+
+
+
+
+
+
+/* 
+.container2 {
+  width: 100%;
+  height: 800px;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 16px;
+  background-color:rgb(249, 251, 253);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(9, 9, 9, 0.1);
+}  */
+
+
+  .danger-btn {
+  background-color: #dc3545; 
+  color: white; 
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.danger-btn:hover {
+  background-color: #c82333; 
+}
+
+
+.btn {
+  display: inline-block;
+  text-align: center;
+}
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+.container2 {
+  width: 100%;
+  height: 300%;
+  max-width: 500px; 
+  margin: 0 auto;
+  margin-top: 4%;
+  margin-left: 36%;
+  padding: 20px;
+  background-color:white;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #1a1919;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  position: absolute;  
+  margin-left: 47%;
+}
+
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  /* height: 88px; */
+}
+
+.input-group label {
+  font-size: 16px;
+  margin-bottom: 3px;
+  font-weight: 587;
+  color: #555;
+}
+
+.input-group input, 
+.input-group textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #dce7e3;
+  width: 90%;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(30, 1, 249, 0.5);
+  outline: none;
+}
+
+
+.button-modern {
+  display: block;
+  width: 90%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.button-modern:hover {
+  background-color: #1920f7;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .container2 {
+    padding: 15px;
+  }
+  
+  .input-group input {
+    font-size: 14px;
+    padding: 9px;
+  }
+
+  .button-modern {
+    font-size: 16px;
+  }
+}
+
+
+
+
+
+.input-group textarea, 
+.input-group input[name="bio"] {
+  width: 100%; 
+  max-width: 400px; 
+  padding: 8px; 
+  height: 80px; 
+  resize: vertical; 
+  font-size: 14px; 
+  /* border: 1px solid #ebe9e9; */
+  border-radius: 6px;
+  /* border-color: #007bff;
+  box-shadow: 0 0 5px rgba(30, 1, 249, 0.5);
+  outline: none; */
+}
+.input-group input:focus[name="bio"]{
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(30, 1, 249, 0.5);
+  outline: none;
+}
+
+
+
+.input-group textarea {
+  height: 80px; 
+}
+
+
+
+.profile-picture {
+  width: 160px;                            
+  height: 160px;                         
+  border-radius: 50%;                       
+  object-fit: cover;  
+  border: 2px solid #ddd; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+.crime{
+  position: absolute;
+  text-align: center;
+  margin-right: 30%;
+
+}
+
+
+.crime-list{
+  width:460px;
+  height: 700px;
+  margin-bottom: 60px;
+  position: absolute;
+
+}
+.crimes h1{
+  text-align: center;
+}
+
+.reg_crime a{
+  /* background-color: #7f8081; */
+  color: cornsilk;
+  margin-left: 664px;
+  margin-bottom:50%;
+  /* margin-top: 9px; 
+  margin-left:89%; */
+}
+
+
+
+.records h1{
+  text-align: left;
+  /* position: absolute; */
+  color: red;
+
+}
+.card mb-3{
+  width:600px;
+  height: 800px;
+
+}
+.card-body{
+  width: 1000%;
+
+
+}
+
+
+
+
+
+
+
+/* .container7{
+    max-width: 700px;
+    margin: auto;
+} */
+
+
+
+
+
+
+
+
+.container8 {
+  max-width: 800px; /* Increased width */
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .container8 {
+      max-width: 670px; 
+  }
+}
+
+@media (min-width: 1024px) {
+  .container8 {
+      max-width: 750px; 
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+body {
+  background-color: #f8f9fa;
+  font-family: 'Arial', sans-serif;
+}
+
+.container7 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.login h4 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.login input[type="text"], .login input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0 20px 0;
+  display: inline-block;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.login input[type="text"]:focus, .login input[type="password"]:focus {
+  border-color: #007bff;
+}
+
+.login a {
+  color: #007bff;
+  font-size: 14px;
+}
+
+.login a:hover {
+  text-decoration: underline;
+}
+
+.regist {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.regist:hover {
+  background-color: #0056b3;
+}
+
+.signup h3 {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.signup h3 a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup h3 a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+/* 
+#sidebarsettings, */
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #0e1421;
+  color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  background: linear-gradient(135deg, #1f2e47, #161d2b);
+  color: #8c9aad;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.sidebar h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #8c9aad;
+  margin: 10px 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f9a826;
+}
+
+/* Content Area */
+.content {
+  margin-left: 270px;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+.form-card {
+  border-radius: 10px;
+  padding: 30px;
+  background-color: #f8f9fa;
+}
+.form-title {
+  font-weight: bold;
+  font-size: 24px;
+}
+.form-label {
+  font-weight: 600;
+}
+.form-control {
+  padding: 10px;
+}
+.btn-custom {
+  background-color: #007bff;
+  border: none;
+  font-size: 18px;
+  font-weight: 200;
+  padding: 10px 15px;
+  color: white;
+}
+.btn-custom:hover {
+  background-color: #0056b3;
+}
+.image-preview {
+  max-width: 300px;
+  margin-top: 15px;
+}
+
+
+ */
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #camerapage */
+
+body {
+  background-color: #f4f7fc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container-camera {
+  margin-top: 100px;
+}
+.btn-success, .btn-info {
+  padding: 15px;
+  font-size: 1.5rem;
+}
+.btn-success:hover {
+  background-color: #218838;
+}
+.btn-info:hover {
+  background-color: #117a8b;
+}
+.section-heading {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General Styles Homepage */
+body {
+  background-color: #f8f9fa; /* Light gray background for a clean look */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Home Page Container */
+.home {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Section Heading */
+.home h1.display-4 {
+  font-weight: 700;
+  color: #343a40; /* Dark gray color for better readability */
+}
+
+.home p.lead {
+  color: #6c757d; /* Medium gray for subtlety */
+}
+
+/* Card Styles */
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none; /* Remove default border */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+.btn {
+  font-size: 1.25rem;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Remove Button Focus Outline */
+.btn:focus {
+  box-shadow: none;
+}
+
+/* Icon Styles */
+.card-body i {
+  transition: color 0.3s, transform 0.3s;
+}
+
+.card:hover .card-body i {
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* crimepage */
+
+body {
+  background-color: #f4f7fc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container-crime {
+  margin-top: 100px;
+  text-align: center;
+}
+.btn-danger, .btn-primary {
+  padding: 15px;
+  font-size: 1.5rem;
+}
+.btn-danger:hover {
+  background-color: #c82333;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+.section-heading {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #createcriminal */
+
+.btn {
+   margin-left: 12px;                   
+}  
+
+.row.mb-5 {
+  margin-bottom: 36px; /* Adjust the spacing between the header and form */
+}
+/* .col-auto a{
+  margin-left: 70px;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #registerpage */
+
+body {
+  background-color: #f7f9fc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+  font-size: 28px;
+}
+
+.form-control {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* .btn3 {
+  background-color: #007bff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 9px;
+  color: white;
+  
+}
+
+.btn:hover {
+  background-color: #0056b3;
+} */
+
+
+
+
+
+
+
+
+.btn3 {
+  padding: 10px 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+.btn3-primary {
+  background-color: #007bff;  
+  color: white;
+}
+
+.btn3-primary:hover {
+  background-color: #0056b3; 
+}
+
+
+
+
+
+
+
+
+
+
+.text-center p {
+  font-size: 16px;
+}
+
+.text-center a {
+  color: #007bff;
+  font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #loginpage */
+
+body {
+  background-color: #f7f9fc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h4 {
+  font-size: 24px;
+  color: #333;
+}
+
+.form-control {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn7-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 19px;
+  color: white;
+  border-radius: 10px;
+ 
+}
+
+.btn7-primary:hover {
+  background-color: #0056b3;
+}
+
+.text-center p {
+  font-size: 14px;
+}
+
+.text-center a {
+  color: #141ee0;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.text-center a:hover {
+  color: #176bc4;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* #indexpage */
+/* 
+.btn8{
+  background-color:#218838;
+  border: none;
+  padding: 15px 23px; 
+  color: white;
+  border-radius: 5px;
+  
+} */
+
+
+
+
+
+
+
+
+
+.btn8 {
+  padding: 10px 20px;        /* Add padding to buttons */
+  font-size: 16px;           /* Increase font size */
+  border: none;              /* Remove default border */
+  border-radius: 5px;       /* Rounded corners */
+  cursor: pointer;           /* Pointer cursor on hover */
+}
+
+.btn8-success {
+  background-color: #28a745; /* Green background */
+  color: white;              /* White text */
+}
+
+.btn8-success:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+
+
+
+
+
+/* #realtimepage */
+
+.btn15{
+  background-color: #ea0f3b;
+  border: none;
+  padding: 16px 17px; 
+  color: white;
+  border-radius: 5px;
+  padding: 16px 17px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #edit profile button */
+
+/* Add your custom button styling here */
+.edit-profile-btn {
+    background: linear-gradient(135deg, #ff6f61, #ff9472);
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    border-radius: 30px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.edit-profile-btn i {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 1.2rem;
+}
+
+/* Hover effect: Color change and slight scale up */
+.edit-profile-btn:hover {
+    background: linear-gradient(135deg, #f55322, #ff6f61);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+/* #edit profile page */
+/* 
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.edit5 h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.container9 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 700px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+.editor6 {
+  width: 100%;
+  }
+
+.input-group {
+        margin-bottom: 20px;
+      }
+
+label {
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+        color: #444;
+        margin-bottom: 5px;
+      }
+
+input[type="text"],
+input[type="email"],
+input[type="file"],
+
+textarea {
+  width: 100%;     
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+i {
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.form-section {
+  padding: 15px;
+} */ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #navbar styling */
+
+
+.navbar {
+  background-color: #181819;
+  height:12%; /* Your custom primary color */
+  padding: 10px 19px;  /* Increase padding for a more spacious look */
+  border-radius: 0 0 10px 10px; /* Optional: Rounded bottom corners */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.btn-outline-light {
+  background-color: #f8f9fa;
+  border-color: #fff;
+}
+
+
+
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: #007bff;
+}
+
+.btn-danger {
+  padding: 0.5rem 1.5rem; /* Adjust padding for a larger button */
+}
+
+
+
+
+.custom-width {
+   width: 190px;                         
+  
+}
+
+
+
+
+/* 
+# homepage */
+.home {
+  max-width: 800px;
+  margin: 0 auto;
+ }
+.card:hover {
+  transform: translateY(-5px);
+  transition: all 0.2s ease-in-out;
+}
+.card i {
+  font-size: 3rem;
+  color: inherit;
+} 
+  
+
+
+/* 
+#register crimepage */
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.card {
+  border-radius: 12px;
+}
+h1, h2 {
+  font-weight: 600;
+}
+h1 {
+  font-size: 2.5rem;
+}
+.form-section hr {
+  border-top: 1px solid #ddd;
+  margin-top: 0;
+}
+.form-section {
+  padding-top: 10px;
+}
+.btn-lg {
+  font-size: 1.1rem;
+  padding: 0.75rem 1.25rem;
+  width:30px;
+}
+
+
+
+
+/* 
+
+#camerapage */
+
+
+.container-camera {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.section-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+.btn-lg {
+  font-size: 1.2rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+}
+.btn-success, .btn-danger {
+  font-weight: 500;
+}
+.btn-success {
+  background-color: #28a745;
+  border: none;
+}
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+.row {
+  gap: 20px; /* Adjusts spacing between buttons */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+#face detection page */
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+.container8 {
+  text-align: center;
+}
+img {
+  border: 2px solid #000;
+}
+.container h1 {
+  color: black;
+}
+.btn15 {
+  background-color: #ea0f3b;
+  border: none;
+  padding: 10px 20px; 
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+/* #index page */
+/* .container h2{
+  margin-top: 4px;
+}
+ 
+
+
+
+
+
+
+
+.custom-width {
+width: 150px; Adjust width as needed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

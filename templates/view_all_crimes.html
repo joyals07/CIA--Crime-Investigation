@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block title %}
+    <title>Base</title>
+    {% endblock %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+ /* Global Styles */
+ body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0e1421;
+            color: #fff;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            background: linear-gradient(135deg, #1f2e47, #161d2b);
+            color: #8c9aad;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .sidebar a {
+    display: block;
+    color: #9CA3AF;
+    text-decoration: none;
+    margin: 15px 0;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #fff;
+    background: #374151;
+    border-radius: 5px;
+}
+.col-md-7 {
+   
+    margin-left: 60%; 
+  }
+  table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 12px;
+    text-transform: uppercase;
+}
+
+    </style>
+    </head>
+<body>
+
+
+  <div class="sidebar"> 
+     <h2>CrimeSys</h2>
+    
+    <a href="{% url 'home' %}" class="active">Home</a>
+    <a href="javascript:history.back()">Back</a>
+    <a href="{% url 'logout' %}">Logout</a>
+  </div>
+
+<div class="indexpage" style="background-color: #111827; margin: 0; min-height: 100vh; padding: 20px 0;">
+  <div class="container-fluid">
+    <div class="row" style="max-width: 1000px; margin: 1px; auto; width: 120%;">
+
+<!-- Main Content -->
+<div class="col-md-18-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="content-container " style="background-color: #1e293b; border-radius: 10px; padding: 20px; color: #fff; width: 70%; margin-left: 30%;">
+
+    <div class="header text-center mb-2">
+      <h2 style="font-size: 1.8rem; font-weight: 600; color: #FBBF24; margin-bottom: 9px;">All Crimes of {{ criminal.name }}</h2>
+      <p style="font-size: 1.2rem; color: #9CA3AF;">Review the list of recorded crimes associated with this individual.</p>
+    </div>
+
+    <div class="table-container" style="overflow-x: auto;">
+      <table class="table table-borderless" style="width: 100%; color: #D1D5DB;">
+
+        <thead style="background-color: #374151; color: #F3F4F6;">
+          <tr>
+            <th style="padding: 12px; text-transform: uppercase; border-right: 1px solid black;">Crime Type</th>
+            <th style="padding: 12px; text-transform: uppercase; border-right: 1px solid black;">Description</th>
+            <th style="padding: 12px; text-transform: uppercase;">Date Committed</th>
+          </tr>
+        </thead>
+       <hr>
+        <tbody>
+          {% for crime in crimes %}
+          <tr style="background-color: #4B5563; color: #F3F4F6; border-bottom: 1px solid #374151; transition: background-color 0.3s ease;">
+            <td>{{ crime.crime_type }}</td>
+            <td>{{ crime.description }}</td>
+            <td>{{ crime.date_committed|date:"M d, Y" }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="3" class="text-center" style="padding: 20px; color: #9CA3AF; font-size: 1.1rem;">No crimes recorded for this criminal.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div> 
+</div> 
+</div> 
+</div>
+ 
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body> 
+ </html>   

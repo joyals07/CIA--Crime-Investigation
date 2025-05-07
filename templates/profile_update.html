@@ -1,0 +1,24 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Update Profile</title>
+</head>
+<body>
+    <h1>Update Profile</h1>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <button type="submit">Update Profile</button>
+    </form>
+    
+    {% if user.profile.profile_picture %}
+        <img src="{{ user.profile.profile_picture.url }}" alt="{{ user.username }}'s profile picture" style="max-width: 400px">
+    {% endif %}
+
+</body>
+</html>

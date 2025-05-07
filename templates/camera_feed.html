@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Camera Feed</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0e1421;
+            color: #fff;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #1f2e47, #161d2b);
+            color: #8c9aad;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #9CA3AF;
+            text-decoration: none;
+            margin: 15px 0;
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #fff;
+            background: #374151;
+            border-radius: 5px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 260px; /* Push content to the right */
+            padding: 20px;
+        }
+
+        .camera-container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            color: black;
+        }
+
+        video, canvas {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .navbar {
+            background-color: #333;
+            margin-left: 250px; /* Align navbar with main content */
+        }
+        h2{
+            color:#fbf8f8;
+            
+        }
+        h3{
+            color:#1f2e47;
+        }
+    </style>
+</head> 
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>CrimeSys</h2>
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="javascript:history.back()">Back</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <div class="container my-5">
+            <div class="camera-container text-center"> 
+                <h3 class="mb-4">Real-Time Camera Feed</h3>
+                
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas" style="display: none;"></canvas>
+                
+                <div class="mt-4 d-flex justify-content-around">
+                    <button id="captureButton" class="btn btn-success btn-sm">Capture Image</button>
+                    <button id="stopButton" class="btn btn-danger btn-sm">Stop Camera</button>
+                </div>
+            </div>
+        </div>  
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const captureButton = document.getElementById('captureButton');
+        const stopButton = document.getElementById('stopButton'); 
+        let stream = null; 
+
+        // Start the camera
+        async function startCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+            } catch (error) {
+                console.error('Camera access denied:', error);
+                alert('Camera access is required to view the real-time feed.');
+            }
+        }
+
+        // Stop the camera
+        stopButton.addEventListener('click', () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                video.srcObject = null;
+            }
+        });
+
+        captureButton.addEventListener('click', async () => {
+            const context = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+            // Draw the current video frame to the canvas
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Convert the canvas to a Base64 image
+            const imageData = canvas.toDataURL('image/jpeg');
+
+            // Send the image to the server
+            const personId = "{{ id }}";
+
+            try {
+                const response = await fetch('{% url 'save_image' %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({ person_id: personId, image: imageData }),
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    alert('Profile picture updated successfully!');
+                } else {
+                    alert(`Error: ${data.error}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to update the profile picture.');
+            }
+        });
+
+        // Start the camera on page load
+        window.onload = startCamera;
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
